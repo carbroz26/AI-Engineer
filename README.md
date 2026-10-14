@@ -55,9 +55,13 @@ Not every lesson needs substantial code or mathematics; state explicitly when th
 - Never commit credentials, tokens, private documents, or sensitive customer data.
 - Prefer official sources, small readable examples, and reproducible environments.
 
-## 4. Navigation
-- [Proposed syllabus](docs/SYLLABUS.md)
+## 4. Experienced-developer fast track
+The learner has 10 years of Android/Kotlin development experience. Teach familiar programming, API, architecture, asynchronous and testing concepts using **Kotlin-to-Python contrast-first explanations** rather than novice repetition. Still explain every new Python construct and teach genuinely new AI concepts and mathematics in depth. Use the optional [30-day fast-track plan](docs/AI-ENGINEER-30-DAY-FAST-TRACK.md); it does not replace or weaken the frozen 225-lesson syllabus. The 6-hour daily budget is an unconfirmed planning assumption.
+
+## 5. Navigation
+- [Frozen master syllabus](docs/SYLLABUS.md)
+- [30-day experienced-developer fast track](docs/AI-ENGINEER-30-DAY-FAST-TRACK.md)
 - [Original roadmap coverage checklist](docs/ROADMAP-COVERAGE.md)
 - [Learning notes index](docs/notes/README.md)
 
-**Next gate:** Start Phase 00, Lesson 00-001 when the learner requests it. Research the lesson first, then teach and document it following these rules.
+**Next gate:** Begin Day 01 of the optional fast track when the learner requests it, or follow the frozen master syllabus in order. Research each lesson before teaching and document actual progress.
