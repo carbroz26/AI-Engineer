@@ -1,6 +1,6 @@
 # Original AI Engineer Roadmap — Coverage Audit
 
-**Status:** Preliminary mapping; individual lesson IDs are pending.  
+**Status:** FROZEN baseline — group-level coverage reconciled against the 225-lesson syllabus; detailed mapping is maintained by phase and topic.  
 **Basis:** Attached one-page roadmap.sh AI Engineer PDF. This file tracks original labels, including older API terminology, even when newer equivalents will be taught.
 
 | Original roadmap group | Original items covered | Syllabus phase |
@@ -22,5 +22,9 @@
 ## Audit rules
 - Every label from the original PDF must have a lesson-level destination before the syllabus is frozen.
 - Preserve legacy terms for historical understanding while teaching current supported APIs.
-- This table maps groups and subtopics to phases; it is **not yet a verified one-to-one lesson-level audit**.
+- This table maps original roadmap groups and subtopics to the frozen syllabus phases. Lesson-level cross-checks should be maintained during research and notes creation.
 - Research may add topics, but no original item may be silently dropped.
+
+## Approval and follow-up
+
+The learner approved the syllabus on 2026-10-14. This is a traceability baseline, not proof that each topic has been taught. Some vendor-specific APIs and tools are changing and must be revalidated when their lessons begin.
