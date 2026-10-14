@@ -195,3 +195,92 @@ Each term below is explained by meaning, purpose, mechanism, and a practical exa
 - **02-001:** In Progress — Python/pip/venv availability verified; project-specific venv not yet created/verified.
 - **02-002–02-006:** Introduced only; practical exercises and assessment pending.
 - **Day 01:** In Progress; do not mark Practiced/Mastered until evidence is supplied.
+
+
+## 10. Learner verification and first debugging incident — 2026-10-14
+
+### Verified project environment
+The learner reported successful output from the activated virtual environment:
+
+```text
+D:\AI-Engineer-Learning\.venv\Scripts\python.exe
+pip 26.1.2 from D:\AI-Engineer-Learning\.venv\Lib\site-packages\pip (python 3.14)
+(.venv) PS D:\AI-Engineer-Learning>
+```
+
+**Conclusion:** The existing project-specific Python interpreter and pip are operational. This is verified by the learner's actual output. The learner has not yet demonstrated successful execution of `hello.py`.
+
+### Errors encountered and diagnosis
+
+**1. Existing directory**
+```text
+mkdir : An item with the specified name D:\AI-Engineer-Learning already exists.
+DirectoryExist
+```
+**Explanation:** `mkdir` requests a new directory, but the folder already exists. Do not repeat creation of an existing directory. This does not indicate a Python problem.
+
+**2. Re-running virtual environment creation**
+```text
+Unable to copy 'C:\\Python314\\Lib\\venv\\scripts\\nt\\venvlauncher.exe'
+to 'D:\\AI-Engineer-Learning\\.venv\\Scripts\\python.exe'
+```
+**Explanation:** The learner reran `python -m venv .venv` in an existing, activated environment. Copying a launcher onto an existing/in-use executable can fail. The exact Windows file-lock cause was not independently established. Because the existing environment still runs, avoid deleting or recreating it; only troubleshoot further if subsequent execution fails.
+
+**3. Python source entered at a PowerShell prompt**
+```text
+(.venv) PS D:\AI-Engineer-Learning>
+print("Developer:", name)
+# PowerShell ParserError: Missing expression after ','
+```
+**Explanation:** The `PS` prompt identifies PowerShell, a separate shell/scripting language. It is not the Python interactive prompt. PowerShell attempted to parse Python syntax as PowerShell, producing `ParserError`. This does **not** mean the Python source itself is invalid.
+
+### Correct way A: Python interactive shell
+Run in PowerShell:
+```powershell
+python
+```
+Then enter at the `>>>` prompt:
+```python
+name = "Car Broz"
+experience = 10
+print("Developer:", name)
+print("Experience:", experience)
+print("Type:", type(experience))
+```
+Expected output (not yet learner-verified):
+```text
+Developer: Car Broz
+Experience: 10
+Type: <class 'int'>
+```
+Exit the Python interpreter with `exit()`.
+
+### Correct way B: Save and run a Python source file
+From PowerShell:
+```powershell
+notepad hello.py
+```
+Save the same Python statements in `hello.py`, then run:
+```powershell
+python hello.py
+```
+This is the preferred approach for reproducible project code. The learner has not yet confirmed successful execution.
+
+### New technical terms, explained
+- **PowerShell:** A Windows command shell and scripting language. It can launch programs such as Python but does not automatically interpret arbitrary Python source typed at the `PS` prompt.
+- **Shell:** A command interpreter that accepts commands and starts programs; PowerShell is one example.
+- **Interactive interpreter / REPL:** A mode in which Python reads a statement, evaluates or executes it, prints relevant results, and waits for the next input. `REPL` stands for *Read–Eval–Print Loop*. Its prompt is `>>>`, unlike PowerShell's `PS ...>`.
+- **Parser:** A component that checks how source text fits a language's grammar and produces an internal structure for execution or compilation. A PowerShell parser error can occur even when the same text is valid Python.
+- **`ParserError`:** PowerShell's error category when input does not conform to its syntax.
+- **`IndentationError`:** A Python syntax error for invalid indentation. It is unrelated to the learner's PowerShell parser error.
+- **Source file:** A text file containing program statements, such as `hello.py` for Python.
+- **`.py` extension:** Conventional file suffix identifying Python source files; the command `python hello.py` explicitly chooses the Python interpreter.
+- **`.ps1` extension:** Conventional file suffix for PowerShell scripts.
+- **`python hello.py`:** Launches the Python interpreter and asks it to execute the file `hello.py` in the current working directory.
+- **`notepad hello.py`:** Opens Notepad with the specified filename, allowing creation or editing of a Python source file; it does not execute the file.
+- **`print()`:** Python built-in function that converts its arguments to text and writes them to standard output; multiple arguments are separated by spaces by default.
+- **`type()`:** Python built-in function that returns the runtime type of an object. For the integer `10`, it returns `<class 'int'>`.
+- **Standard output:** The usual output stream where a program writes ordinary results, typically shown in the terminal.
+- **`DirectoryExist`:** PowerShell error identifier indicating an attempted directory creation collided with an existing directory.
+
+**Next verification gate:** Ask the learner to run `python hello.py` or the interactive Python example and share its output. Keep Day 01 in progress until successful execution and exercises are confirmed.
