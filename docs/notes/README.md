@@ -9,8 +9,8 @@ Each new study day gets a `day-NN-meaningful-topic.md` document. Update the same
 
 ## Required contents for every day
 1. Date, day number, lesson IDs, prerequisites and honest progress status.
-2. Learning objectives and explanations in **English and Hindi**.
-3. Every important concept, keyword, analogy, why/how/when/trade-off, and Kotlin comparison when helpful.
+2. Learning objectives and detailed explanations in **English only**. Hindi may be used in live teaching, but must never be included in committed learning notes.
+3. Every important concept and technical keyword explained fully at first use: definition, purpose, mechanism, example, when to use, limitations and common misunderstandings; include analogies and Kotlin comparisons when helpful.
 4. **Exact commands used**, each command's purpose, observed output, and errors/fixes; distinguish suggested commands from actually executed ones.
 5. Runnable code examples, dependencies, expected results, and line-by-line explanation.
 6. Research sources, access/verification dates where actually checked, and version notes.
