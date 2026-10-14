@@ -4,6 +4,7 @@
 **Track:** [30-Day Fast Track](../AI-ENGINEER-30-DAY-FAST-TRACK.md)  
 **Master lessons:** 02-001 (environment), 02-002–02-006 (introduced, not completed)  
 **Status:** IN PROGRESS — environment verified; project venv creation and coding exercises not yet verified.  
+**Documentation language:** English only; optional Hindi explanations are for live lessons, not committed notes.  
 **Audience:** 10 years Android/Kotlin experience. This note records actual discussion, demonstrated outputs, and next tasks; not a claim of mastery.
 
 ## Learning objectives
@@ -14,9 +15,8 @@
 - Compare Python dynamic typing with Kotlin's static typing.
 
 ## 1. Why Python is especially useful for AI
-**English:** Python's strength is the combination of its research history, experimentation-friendly syntax, scientific computing libraries, community adoption, and bindings to optimized native CPU/GPU code. Python is often the orchestration interface; expensive numerical kernels can execute in compiled implementations. Python is **not inherently faster than Kotlin/C++**, and model inference can be integrated from other languages.
+Python's strength is the combination of its research history, experimentation-friendly syntax, scientific computing libraries, community adoption, and bindings to optimized native CPU/GPU code. Python is often the orchestration interface; expensive numerical kernels can execute in compiled implementations. Python is **not inherently faster than Kotlin/C++**, and model inference can be integrated from other languages.
 
-**हिंदी:** AI में Python की लोकप्रियता का मुख्य कारण उसका scientific ecosystem, research community, और NumPy/PyTorch जैसी libraries हैं। भारी numerical calculations अक्सर optimized native code या GPU पर चलती हैं; Python उन्हें इस्तेमाल करने का आसान interface देता है। इसका अर्थ यह नहीं कि हर AI application Python में ही बनानी चाहिए।
 
 **Key mechanisms:**
 1. Numerical computing: vectors, matrices, statistics, gradients and tensor operations.
@@ -62,7 +62,6 @@ Learner supplied these PowerShell results:
 - `--help`: print supported usage/options.
 - `py`: optional Windows launcher/install-manager command, not needed for this course.
 
-**हिंदी:** `py` command नहीं चल रही, लेकिन `python`, `pip`, और `venv` सही चल रहे हैं। इसलिए installation ठीक है और अभी Python दोबारा install करने की जरूरत नहीं है।
 
 ## 3. Indentation: Python's block structure
 **Definition:** Indentation means leading whitespace at the beginning of a source line. Python uses consistent indentation to group statements into blocks. PEP 8 recommends **four spaces per indentation level**; the language does not require that every block use exactly four spaces.
@@ -104,7 +103,6 @@ print("Wrong indentation")
 ```
 This raises `IndentationError` because the body is not indented.
 
-**हिंदी:** Kotlin में `{ }` से block पता चलता है। Python में line की शुरुआत के spaces से तय होता है कि कौन-सी line `if` के अंदर है। आम तौर पर पहला level चार spaces और nested level आठ spaces होता है। बिना indentation के `if` body लिखने पर error आती है।
 
 ## 4. Kotlin static typing vs Python dynamic typing (introduced)
 ```python
@@ -115,7 +113,6 @@ print(type(experience))
 ```
 Python's name is rebound from an integer object to a string object. In Kotlin, `var experience = 10` infers `Int`, and assigning a string is a compile-time type error. Python type annotations are useful but generally do not enforce types at runtime.
 
-**हिंदी:** Python में एक variable name पहले integer और बाद में string object को refer कर सकता है। Kotlin में `Int` variable में string assign नहीं कर सकते। AI APIs के uncertain JSON/model output को validate करना इसलिए महत्वपूर्ण होगा।
 
 ## 5. Next local setup — instructions provided, NOT yet verified
 Use a **separate learning folder**, not the existing CarBroz backend:
@@ -132,20 +129,41 @@ Expected interpreter path resembles `D:\AI-Engineer-Learning\.venv\Scripts\pytho
 
 **Kotlin comparison:** `venv` isolates an interpreter/package environment; Gradle's dependency management and build orchestration are broader and not identical.
 
-## 6. Keyword glossary
-| Term | Meaning |
-| --- | --- |
-| Interpreter | Program that executes Python code |
-| Package | Reusable Python code distributed for installation |
-| Module | Python file or importable unit |
-| pip | Python package installer |
-| Virtual environment | Isolated Python executable and installed packages |
-| Indentation | Leading spaces that define Python code blocks |
-| Block | Group of statements executed under a control structure |
-| Dynamic typing | Names can refer to objects of different types at runtime |
-| Static typing | Types checked before execution (as in Kotlin) |
-| Vectorization | Expressing array operations for optimized bulk execution |
-| GPU | Processor suited to massively parallel computation |
+## 6. Detailed technical keyword glossary (English only)
+
+Each term below is explained by meaning, purpose, mechanism, and a practical example or important limitation.
+
+| Term | Meaning, purpose and how it works | Example / important distinction |
+| --- | --- | --- |
+| **Interpreter** | Software that runs Python code. The standard CPython implementation compiles source into bytecode and executes it using its runtime. It handles names, objects, imports and exceptions while the program runs. | `python --version` invokes an installed interpreter; it does not install packages. |
+| **Python runtime** | The execution environment responsible for running Python code, including built-in types, memory management and module loading. | The global Python runtime and a project virtual environment may use the same underlying Python version but different installed packages. |
+| **Module** | An importable unit of Python code, commonly a `.py` file, providing functions, classes or variables. | `import sys` makes the standard-library `sys` module available. |
+| **Package** | A collection of related modules, or a distribution installed using a package manager. These two meanings are related but not identical. | NumPy is an installable distribution exposing the `numpy` import package. |
+| **pip** | A package installer that downloads and installs Python distributions into the selected Python environment. | `python -m pip --version` runs pip through that exact interpreter; this reduces confusion when several Python versions are installed. |
+| **Virtual environment (venv)** | A directory with a Python executable and environment-specific package installation paths. It isolates dependencies across projects. | `python -m venv .venv` creates an environment; it does not by itself activate it. |
+| **Activation** | A shell configuration step that changes which `python` and `pip` commands are found first, usually by updating `PATH`. Activation is optional. | `.\.venv\Scripts\Activate.ps1`; alternatively call `.\.venv\Scripts\python.exe` directly. |
+| **PATH** | An operating-system environment variable containing directories searched for executable commands. | `py` may not be found even when `python` is found. |
+| **Command-line option** | A command argument that changes behavior or requests information. | `--version` prints version information; `--help` prints usage guidance. |
+| **`-m`** | A Python command-line option that finds and runs a module using the selected interpreter. | `python -m pip` and `python -m venv` execute different modules. |
+| **Indentation** | Whitespace at the start of a line. Python uses consistent indentation to determine which statements belong to the same block. | Four spaces per level are a PEP 8 convention, not a fixed requirement for every program. |
+| **Block / suite** | A group of statements associated with a control structure such as `if` or a function definition. | Indented `print` statements following `if condition:` are part of its block. |
+| **`IndentationError`** | A syntax error raised when indentation violates Python's block structure. | An unindented statement immediately after `if True:` causes this error. |
+| **Variable / name** | A name that refers to an object. Assignment binds or rebinds that name; it does not declare a permanent type for the name. | `experience = 10` then `experience = "Ten years"` is valid. |
+| **Object** | A runtime value with a type and identity; names may refer to objects. | The integer `10` and string `"Ten years"` are objects of different types. |
+| **Dynamic typing** | Runtime objects carry types; names can be rebound to values of different types without a compile-time declaration enforcing one type. | `type(experience)` returns `str` after rebinding to a string. |
+| **Static typing** | Type relationships are checked before execution, as in Kotlin compilation. | Kotlin infers `Int` for `var experience = 10` and rejects assigning a `String`. |
+| **Type annotation** | Optional Python syntax documenting or enabling static checking of expected types. It does not usually validate values automatically at runtime. | `age: int = 10` helps editors/type checkers; runtime validation requires additional logic. |
+| **NumPy** | Python numerical-computing library that provides array types and efficient operations. | `np.array([1,2,3]) * 2` multiplies array elements, but NumPy must be installed first. |
+| **Vectorization** | Applying operations across collections/arrays using optimized bulk routines instead of explicit per-element Python loops. | NumPy array arithmetic can be efficient on large inputs; tiny arrays may not benefit. |
+| **CPU** | Central processing unit: general-purpose processor that executes program instructions. | Python interpreter and many NumPy operations run on CPUs. |
+| **GPU** | Graphics processing unit: hardware with many parallel execution resources useful for suitable tensor operations. | Deep-learning frameworks may run tensor kernels on GPUs; not all Python code automatically uses a GPU. |
+| **Tensor** | Multidimensional array of numbers used in numerical computing and machine learning. | A 2D tensor can represent a matrix; a 3D tensor might represent a batch of sequences. |
+| **Matrix** | Rectangular grid of numbers arranged into rows and columns. | Model calculations often multiply matrices to transform numerical representations. |
+| **Gradient** | A collection of derivatives indicating how a function changes as its inputs or parameters change. | Optimization algorithms use gradients to update model parameters. |
+| **Kernel (numerical)** | Optimized routine performing a specific mathematical computation, often compiled for CPU or GPU. Not the operating-system kernel. | PyTorch may dispatch tensor operations to native computation kernels. |
+| **Inference** | Using a trained model to generate predictions or outputs for new inputs. | Calling a hosted language model to answer a question is inference. |
+| **Ecosystem** | Libraries, tools, documentation, people and integrations surrounding a technology. | Python's AI ecosystem includes PyTorch, NumPy, scikit-learn and Hugging Face. |
+| **Network effect** | A technology becomes more useful as adoption increases and creates more tools, documentation and integrations. | Widely shared Python model examples make adoption easier for new teams. |
 
 ## 7. Questions, exercises and interview practice
 **Learner questions addressed:**
