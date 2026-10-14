@@ -2,7 +2,7 @@
 
 > **Purpose:** Become a capable, industry-ready AI engineer through deep understanding, deliberate practice, and real projects.
 >
-> **Status:** Learning rules established. Curriculum remains DRAFT until explicitly approved.
+> **Status:** Learning rules established. Curriculum v1.0 approved and frozen on 2026-10-14; lessons not started.
 
 ## 1. Non-negotiable teaching contract
 1. **English and Hindi together:** Explain each concept in clear English, followed by a meaningful Hindi translation/explanation (देवनागरी). Retain English technical terms where useful. Translate explanations, not merely headings.
@@ -60,4 +60,4 @@ Not every lesson needs substantial code or mathematics; state explicitly when th
 - [Original roadmap coverage checklist](docs/ROADMAP-COVERAGE.md)
 - [Learning notes index](docs/notes/README.md)
 
-**Next gate:** Review the syllabus, expand it to individual lessons, reconcile the roadmap checklist, then explicitly freeze it before teaching begins.
+**Next gate:** Start Phase 00, Lesson 00-001 when the learner requests it. Research the lesson first, then teach and document it following these rules.
