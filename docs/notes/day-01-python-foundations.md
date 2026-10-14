@@ -284,3 +284,53 @@ This is the preferred approach for reproducible project code. The learner has no
 - **`DirectoryExist`:** PowerShell error identifier indicating an attempted directory creation collided with an existing directory.
 
 **Next verification gate:** Ask the learner to run `python hello.py` or the interactive Python example and share its output. Keep Day 01 in progress until successful execution and exercises are confirmed.
+
+
+## 11. Verified first interactive Python execution — 2026-10-14
+
+The learner successfully activated the project virtual environment from PowerShell, launched the Python interpreter, executed statements at the `>>>` prompt, and exited back to PowerShell. The learner's actual transcript:
+
+```text
+PS D:\Backend\CarBroz\backend> cd D:\
+PS D:\> cd AI-Engineer-Learning
+PS D:\AI-Engineer-Learning> .\.venv\Scripts\Activate.ps1
+(.venv) PS D:\AI-Engineer-Learning> python
+Python 3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)] on win32
+>>> name = "Car Broz"
+>>> experience = 10
+>>> print("Developer:", name)
+Developer: Car Broz
+>>> print("Experience:", experience)
+Experience: 10
+>>> print("Type:", type(experience))
+Type: <class 'int'>
+>>> exit()
+(.venv) PS D:\AI-Engineer-Learning>
+```
+
+**Verified:** Python 3.14.6 interpreter starts from the activated environment; assignment and `print()` work; `type(10)` is `int`; `exit()` returns to PowerShell. No successful `hello.py` file execution has yet been reported.
+
+### Detailed keyword explanations
+- **REPL (Read–Eval–Print Loop):** An interactive programming mode that reads entered statements, executes them, displays relevant results or errors, and waits for more input. Useful for experimenting with syntax and inspecting objects; longer reproducible programs belong in source files.
+- **Prompt:** Text displayed by a shell or interpreter to indicate readiness for input. `PS ...>` identifies PowerShell; `>>>` identifies the Python REPL. These prompts are not part of the code you type.
+- **Assignment:** The `=` statement binds a name to an object. `experience = 10` binds `experience` to an integer object; the name can later be rebound.
+- **`int`:** Python's built-in integer type for whole-number values, such as `10`, `0`, and `-3`. `type(10)` returns `<class 'int'>`.
+- **`str`:** Python's built-in string type for sequences of Unicode characters, such as `"Car Broz"`. Strings represent text and are not interchangeable with integers in arithmetic.
+- **`print(*objects)`:** Built-in function that converts arguments to text and writes them to standard output. By default, separate arguments are separated by a space and a newline is added. `print("Experience:", 10)` prints `Experience: 10`.
+- **`type(object)`:** Built-in function that returns the type of a runtime object; it helps inspect dynamically typed values.
+- **`exit()`:** Interactive helper that exits the Python REPL, returning control to the parent PowerShell process. In production scripts, normal program completion or appropriate process-exit handling is preferable.
+- **Runtime type:** The type associated with a Python object while the program is executing. For example, `10` has type `int`, and `"Ten years"` has type `str`.
+- **Rebinding:** Assigning a name to a different object after it already referred to another object. Python permits rebinding `experience` from `10` to `"Ten years"`.
+- **Type inference (Kotlin):** Kotlin determines a variable's static type from its initializer when the type is not written explicitly; `var experience = 10` is inferred as `Int` and cannot subsequently be assigned a `String`.
+
+### Next exercise (not yet executed)
+In the Python REPL, predict and then run:
+```python
+experience = 10
+print(type(experience))
+experience = "Ten years"
+print(type(experience))
+```
+Expected types: `int` followed by `str`. The goal is to explain Python name rebinding versus Kotlin static type checking.
+
+**Learning status:** The first Python REPL exercise is **Practiced (verified by output)**. The full Day 01 curriculum remains **In Progress**, and the saved-file exercise is pending.
